@@ -1,0 +1,28 @@
+{
+  "name": "competicoes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+    "start": "npm run build && node dist/index.js",
+    "production": "pm2 start dist/index.js --name competicoes"
+  },
+  "dependencies": {
+    "body-parser": "~1.0.1",
+    "express": "~4.0.0",
+    "jsonwebtoken": "^8.3.0",
+    "knex": "^0.14.6",
+    "mongoose": "~3.6.13",
+    "sqlite3": "^4.0.0"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "rimraf": "^2.6.2",
+    "webpack-dev-server": "^3.1.4"
+  }
+}
