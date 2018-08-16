@@ -13,6 +13,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 var route = function route(app) {
     app.route('/users').get(routes.list).post(routes.create);
     app.route('/users/:userId').get(routes.get).put(routes.update).delete(routes.remove);
+    return app;
 };
 
 exports.default = route;

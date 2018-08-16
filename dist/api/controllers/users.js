@@ -3,39 +3,64 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.remove = exports.update = exports.create = exports.get = exports.list = undefined;
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+var _database = require('../database');
 
-var users = [{ userId: 1, name: 'Bruno' }, { userId: 2, name: 'Bruno 2' }, { userId: 3, name: 'Bruno 3' }, { userId: 4, name: 'Bruno 4' }];
+var _database2 = _interopRequireDefault(_database);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var list = exports.list = function list(req, res) {
-    res.json(users);
+    _database2.default.select('UserId', 'Name', 'ProfileId').from('TB_USERS').then(function (result) {
+        var response = {
+            resultCode: 1,
+            resultMessage: 'Operação realizada com sucesso',
+            data: result
+        };
+        res.json(response);
+    });
 };
 
 var get = exports.get = function get(req, res) {
-    res.json(users.find(function (u) {
-        return u.userId == req.params.userId;
-    }));
+    _database2.default.first('UserId', 'Name', 'ProfileId').from('TB_USERS').where({ UserId: req.params.userId }).then(function (result) {
+        var response = {
+            resultCode: 1,
+            resultMessage: 'Operação realizada com sucesso',
+            data: result
+        };
+        res.json(response);
+    });
 };
 
 var create = exports.create = function create(req, res) {
-    users = [].concat(_toConsumableArray(users), [req.body]);
-    res.json(req.body);
+    _database2.default.table('TB_USERS').insert({ Name: req.body.name, Password: req.body.password, ProfileId: req.body.profileId }).then(function (result) {
+        var response = {
+            resultCode: 1,
+            resultMessage: 'Operação realizada com sucesso'
+        };
+        res.json(response);
+    });
 };
 
 var update = exports.update = function update(req, res) {
-    user = users.find(function (u) {
-        return u.userId == req.params.userId;
+    _database2.default.from('TB_USERS').where({ UserId: req.params.userId }).update({ ProfileId: req.body.profileId }).then(function (result) {
+        var response = {
+            resultCode: 1,
+            resultMessage: 'Operação realizada com sucesso',
+            data: result
+        };
+        res.json(response);
     });
-    users = users.filter(function (u) {
-        return u.userId != req.params.userId;
-    });
-    user = [].concat(_toConsumableArray(users), [user]);
-    res.json(req.body);
 };
 
 var remove = exports.remove = function remove(req, res) {
-    users = users.filter(function (u) {
-        return userId != req.params.userId;
+    _database2.default.from('TB_USERS').where({ UserId: req.params.userId }).del().then(function (result) {
+        var response = {
+            resultCode: 1,
+            resultMessage: 'Operação realizada com sucesso',
+            data: result
+        };
+        res.json(response);
     });
 };

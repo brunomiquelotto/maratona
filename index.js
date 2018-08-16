@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import { configureRoutes, configureOpenRoutes } from './api/routes';
 import Auth from './api/middlewares/auth';
 import allowCors from './api/middlewares/cors';
+import { start } from './api/database';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -20,6 +21,8 @@ configureOpenRoutes(openApi);
 app.use(allowCors);
 app.use('/api', protectedApi);
 app.use('/oapi', openApi);
+
+//start();
 
 app.listen(port);
 

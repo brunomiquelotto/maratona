@@ -18,6 +18,8 @@ var _cors = require('./api/middlewares/cors');
 
 var _cors2 = _interopRequireDefault(_cors);
 
+var _database = require('./api/database');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express2.default)();
@@ -36,6 +38,8 @@ var openApi = _express2.default.Router();
 app.use(_cors2.default);
 app.use('/api', protectedApi);
 app.use('/oapi', openApi);
+
+//start();
 
 app.listen(port);
 

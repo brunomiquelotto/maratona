@@ -1,30 +1,64 @@
-let users = [
-    {userId: 1, name: 'Bruno'},
-    {userId: 2, name: 'Bruno 2'},
-    {userId: 3, name: 'Bruno 3'},
-    {userId: 4, name: 'Bruno 4'},
-];
+import context from '../database';
 
 export const list = (req, res) => {
-    res.json(users);
+    context.select('UserId', 'Name', 'ProfileId').from('TB_USERS').then(result => {
+        let response = {
+            resultCode: 1,
+            resultMessage: 'Operação realizada com sucesso',
+            data: result
+        };
+        res.json(response);
+    });
 };
 
 export const get = (req, res) => {
-    res.json(users.find(u => u.userId == req.params.userId));
+    context.first('UserId', 'Name', 'ProfileId').from('TB_USERS').where({UserId: req.params.userId})
+    .then(result => {
+        let response = {
+            resultCode: 1,
+            resultMessage: 'Operação realizada com sucesso',
+            data: result
+        };
+        res.json(response);
+    });
 };
 
 export const create = (req, res) => {
-    users = [...users, req.body];
-    res.json(req.body);
+    context.table('TB_USERS').insert({ Name: req.body.name, Password: req.body.password, ProfileId: req.body.profileId }).then(result => {
+        let response = {
+            resultCode: 1,
+            resultMessage: 'Operação realizada com sucesso'
+        }
+        res.json(response);
+    });
 };
 
 export const update = (req, res) => {
-    user = users.find(u => u.userId == req.params.userId);
-    users = users.filter(u => u.userId != req.params.userId);
-    user = [...users, user];
-    res.json(req.body);
+    context
+        .from('TB_USERS')
+        .where({UserId: req.params.userId})
+        .update({ ProfileId: req.body.profileId })
+        .then(result => {
+            let response = {
+                resultCode: 1,
+                resultMessage: 'Operação realizada com sucesso',
+                data: result
+            };
+            res.json(response);
+        });
 };
 
 export const remove = (req, res) => {
-    users = users.filter(u => userId != req.params.userId);
+    context
+        .from('TB_USERS')
+        .where({UserId: req.params.userId})
+        .del()
+        .then(result => {
+            let response = {
+                resultCode: 1,
+                resultMessage: 'Operação realizada com sucesso',
+                data: result
+            };
+            res.json(response);
+        });
 };
