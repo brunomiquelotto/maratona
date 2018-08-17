@@ -4,6 +4,7 @@ import { configureRoutes, configureOpenRoutes } from './api/routes';
 import Auth from './api/middlewares/auth';
 import allowCors from './api/middlewares/cors';
 import { start } from './api/database';
+import io from 'socketio';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -27,3 +28,11 @@ app.use('/oapi', openApi);
 app.listen(port);
 
 console.log('API is up and running on port ' + port);
+
+io.on('connection', (socket) => {
+    socket.on('score-updated', (data) => {
+        socket.broadcast.emit('score-update', {
+            data: data
+        })
+    });
+});
