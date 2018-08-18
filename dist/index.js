@@ -20,9 +20,14 @@ var _cors2 = _interopRequireDefault(_cors);
 
 var _database = require('./api/database');
 
+var _database2 = _interopRequireDefault(_database);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express2.default)();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
 var port = process.env.PORT || 3000;
 
 app.use(_bodyParser2.default.urlencoded({ extended: true }));
@@ -38,9 +43,19 @@ var openApi = _express2.default.Router();
 app.use(_cors2.default);
 app.use('/api', protectedApi);
 app.use('/oapi', openApi);
+app.use('/admin', _express2.default.static('admin'));
 
 //start();
 
-app.listen(port);
+http.listen(port);
 
 console.log('API is up and running on port ' + port);
+
+io.on('connection', function (socket) {
+    console.log('User Connected');
+    _database2.default.select('*').from('TB_COMPETITIONS').then(function (result) {
+        result.forEach(function (item) {
+            socket.emit('score-updated', item);
+        });
+    });
+});

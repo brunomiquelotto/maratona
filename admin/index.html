@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Competições</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+</head>
+<body>
+    <side-bar params="menus: $data.pages"></side-bar>
+    <section class="container-fluid main-content">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Id</th>
+                    <th>Id</th>
+                    <th>Id</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- ko foreach: score-->
+                <tr>
+                    <td data-bind="text: $data.CompetitionId"></td>
+                    <td data-bind="text: $data.Name"></td>
+                    <td data-bind="text: $data.DtStart"></td>
+                    <td data-bind="text: $data.FreezeTime"></td>
+                </tr>
+                <!-- /ko -->
+            </tbody>
+        </table>
+    </section>
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="js/knockout-3.4.2.js"></script>
+<script src="js/axios.min.js"></script>
+<script src="js/alertify.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/ViewModels/homeViewModel.js"></script>
+<script src="js/ViewModels/MainModel.js"></script>
+<script src="js/Components/Header.js"></script>
+<script src="js/socket.io.js"></script>
+<script>
+    var vm;
+    $(document).ready(function() {
+        vm = new ViewModel();
+        ko.applyBindings(vm);
+    });
+</script>
+<script type="text/html" id="home-page">
+    
+</script>
+</html>
