@@ -35,9 +35,23 @@ console.log('API is up and running on port ' + port);
 
 io.on('connection', (socket) => {
     console.log('User Connected');
-    context.select('*').from('TB_COMPETITIONS').then(result => {
+    context
+    .select(
+        'TB_QUESTIONS.QuestionId',
+        'TB_QUESTIONS.Letter',
+        'TB_QUESTIONS.Description',
+        'TB_QUESTIONS.Color',
+        'TB_TEAM_QUESTION.Tries',
+        'TB_TEAM_QUESTION.IsRight',
+        'TB_TEAM_QUESTION.PenaltyTime',
+    )
+    .from('TB_TEAM_QUESTION')
+    .innerJoin('TB_QUESTIONS', 'TB_TEAM_QUESTION.QuestionId', 'TB_QUESTIONS.QuestionId')
+    .then(result => {
         result.forEach(item => {
-            socket.emit('score-updated', item);
-        });
+            socket.emit('score-updated', result)
+        })
     });
 });
+
+global.io = io;

@@ -53,9 +53,11 @@ console.log('API is up and running on port ' + port);
 
 io.on('connection', function (socket) {
     console.log('User Connected');
-    _database2.default.select('*').from('TB_COMPETITIONS').then(function (result) {
+    _database2.default.select('TB_QUESTIONS.QuestionId', 'TB_QUESTIONS.Letter', 'TB_QUESTIONS.Description', 'TB_QUESTIONS.Color', 'TB_TEAM_QUESTION.Tries', 'TB_TEAM_QUESTION.IsRight', 'TB_TEAM_QUESTION.PenaltyTime').from('TB_TEAM_QUESTION').innerJoin('TB_QUESTIONS', 'TB_TEAM_QUESTION.QuestionId', 'TB_QUESTIONS.QuestionId').then(function (result) {
         result.forEach(function (item) {
-            socket.emit('score-updated', item);
+            socket.emit('score-updated', result);
         });
     });
 });
+
+global.io = io;

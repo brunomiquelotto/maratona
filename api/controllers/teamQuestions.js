@@ -47,12 +47,27 @@ const update = (result, res, req) => {
             PenaltyTime: req.body.isRight ? req.body.penaltyTime : 0
         })
         .then(result => {
-            res.json({
-                resultCode: 1,
-                resultMessage: 'Operação realizada com sucesso',
-                data: result 
+            context.first(
+                'TB_QUESTIONS.QuestionId',
+                'TB_QUESTIONS.Letter',
+                'TB_QUESTIONS.Description',
+                'TB_QUESTIONS.Color',
+                'TB_TEAM_QUESTION.Tries',
+                'TB_TEAM_QUESTION.IsRight',
+                'TB_TEAM_QUESTION.PenaltyTime',
+                'TB_TEAM_QUESTION.TeamId'
+            )
+            .where({ TeamQuestionId: result })
+            .from('TB_TEAM_QUESTION')
+            .innerJoin('TB_QUESTIONS', 'TB_QUESTIONS.QuestionId', 'TB_TEAM_QUESTION.QuestionId')
+            .then(result => {
+                io.emit('score-updated', result)
+                res.json({
+                    resultCode: 1,
+                    resultMessage: 'Operação realizada com sucesso',
+                    data: result 
+                });
             });
-            // TODO: disparar broadcast;
         });
 };
 
@@ -67,11 +82,26 @@ const insert = (res, req) => {
             PenaltyTime: req.body.isRight ? req.body.penaltyTime : 0
         })
         .then(result => {
-            res.json({
-                resultCode: 1,
-                resultMessage: 'Operação realizada com sucesso',
-                data: result 
-            });
-            // TODO: disparar broadcast;
+            context.first(
+                'TB_QUESTIONS.QuestionId',
+                'TB_QUESTIONS.Letter',
+                'TB_QUESTIONS.Description',
+                'TB_QUESTIONS.Color',
+                'TB_TEAM_QUESTION.Tries',
+                'TB_TEAM_QUESTION.IsRight',
+                'TB_TEAM_QUESTION.PenaltyTime',
+                'TB_TEAM_QUESTION.TeamId'
+            )
+            .where({ TeamQuestionId: result })
+            .from('TB_TEAM_QUESTION')
+            .innerJoin('TB_QUESTIONS', 'TB_QUESTIONS.QuestionId', 'TB_TEAM_QUESTION.QuestionId')
+            .then(result => {
+                io.emit('score-updated', result)
+                res.json({
+                    resultCode: 1,
+                    resultMessage: 'Operação realizada com sucesso',
+                    data: result 
+                });
+            });screen
         });
 }
