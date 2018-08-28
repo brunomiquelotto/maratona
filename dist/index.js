@@ -43,7 +43,7 @@ var openApi = _express2.default.Router();
 app.use(_cors2.default);
 app.use('/api', protectedApi);
 app.use('/oapi', openApi);
-app.use('/admin', _express2.default.static('admin'));
+app.use('/competition', _express2.default.static('competition'));
 
 //start();
 

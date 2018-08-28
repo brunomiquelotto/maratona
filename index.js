@@ -25,7 +25,7 @@ configureOpenRoutes(openApi);
 app.use(allowCors);
 app.use('/api', protectedApi);
 app.use('/oapi', openApi);
-app.use('/admin', express.static('admin'));
+app.use('/competition', express.static('competition'));
 
 //start();
 
