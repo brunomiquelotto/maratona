@@ -3,8 +3,6 @@ import bodyParser from 'body-parser';
 import { configureRoutes, configureOpenRoutes } from './api/routes';
 import Auth from './api/middlewares/auth';
 import allowCors from './api/middlewares/cors';
-import { start } from './api/database';
-import context from './api/database';
 
 const app = express();
 var http = require('http').Server(app);
@@ -25,9 +23,22 @@ configureOpenRoutes(openApi);
 app.use(allowCors);
 app.use('/api', protectedApi);
 app.use('/oapi', openApi);
+var redirect = function(route) {
+    return function(req, res, next) {
+        console.log(req.params.id);
+        if (req.params.id.indexOf('js') == -1
+            && req.params.id.indexOf('css') == -1
+            && req.params.id.indexOf('templates') == -1) {
+            res.redirect(route);
+        } else {
+            next();
+        }
+    };
+};
+app.use('/competition/juiz/:id/', redirect('/competition/juiz'));
+app.use('/competition/placar/:id/', redirect('/competition/placar'));
+app.use('/competition/admin/:id/', redirect('/competition/admin'));
 app.use('/competition', express.static('competition'));
-
-//start();
 
 http.listen(port);
 
