@@ -22,25 +22,18 @@ define(['knockout', 'knockout-router'], function(ko) {
     };
 
     ko.router.configure({
-        hashPrefix: '#/',
+        hashPrefix: '#',
         debug: true,
         notify: notify,
         pushState: true,
-        root: 'competition/placar/'
+        root: 'competition#placar'
     });
 
     ko.bindingHandlers.module.baseDir = 'js';
 
-    // Define the routes before ko.applyBindings() 
     ko.router.map([
         { route: 'grupos', name: 'grupos', template: 'grupos', title: 'Grupos', nav: true, module: 'vm-grupos' },
-        // { route: 'competition/admin/', name: 'admin', template: 'home', title: 'Admin Title', nav: true },
-        // { route: 'juiz', name: 'juiz', template: 'juiz', title: 'Juiz Title', nav: true },
-        // { route: 'contact-us', name: 'contact', title: 'Contact Us', nav: true },
-        // { route: 'content/news/:articleId', module: 'news' }
-        //{ route: 'blog(/:slug)', name: 'blog', title: 'Crazy Blog' },
-        //{ route: '*notfound', name: 'notfound', callback: notFoundHandler }
-    ]).mapNotFound({ callback: notFoundHandler }); // can specify a module/template/callback/title
+    ]).mapNotFound({ callback: notFoundHandler });
 
     ko.applyBindings(viewModel);
 

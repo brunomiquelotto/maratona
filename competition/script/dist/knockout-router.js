@@ -339,8 +339,6 @@
 
       if (!route) return;
 
-      debugger;
-
       // determine the binding and options to use
       if (route.config.module) {
         binding = {

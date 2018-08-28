@@ -1,21 +1,92 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title> Competition - Juiz </title>
-
     <script src="../script/lib/require-2.1.10.min.js" data-main="index.js"></script>
     <script src="../script/require-conf.js"></script>
-
+    <title>Competições</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="../css/main.css" />
 </head>
 <body>
-
-    <h1>Aqui sera um tamplate mais bonitinho </h1>
-
-    <nav data-bind="foreach: router.navRoutes">
-        <a data-bind="text: config.title, attr: { href: config.href }"></a>
-    </nav>
-
-    <section data-bind="router"></section>
-
+    <aside class="sidebar">
+        <ul class="sidebar-menus">
+            <li>
+                <a href="/admin">1</a>
+            </li>
+            <li>
+                <a href="/juiz">2</a>
+            </li>
+            <li>
+                <a href="/placar">3</a>
+            </li>
+        </ul>
+    </aside>
+    <section class="container-fluid main-content">
+            <div class="row">
+                <div class="col-12 mg-t-10">
+                    <div class="bg-white shadow" style="height: 50px;">
+                        <div class="score-item-left bg-gold">
+                            <span class="score-item-position">1</span>
+                        </div>
+                        <div class="score-item-content">
+                            <span>Equipe Alpha</span>
+                            <div class="balloon-list">
+                                <div class="balloons">
+                                    <div class="balloon balloon-animation-1 bg-gold"></div>
+                                    <div class="balloon balloon-animation-2 bg-silver"></div>
+                                    <div class="balloon balloon-animation-3 bg-primary"></div>
+                                    <div class="balloon balloon-animation-1 bg-success"></div>
+                                    <div class="balloon balloon-animation-2 bg-warning"></div>
+                                    <div class="balloon balloon-animation-3 bg-danger"></div>
+                                    <div class="balloon balloon-animation-1 bg-info"></div>
+                                    <div class="balloon balloon-animation-2 bg-dark"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white shadow mg-t-10" style="height: 50px;">
+                        <div class="score-item-left bg-silver">
+                            <span class="score-item-position">2</span>
+                        </div>
+                        <div class="score-item-content">
+                            <span>Equipe Alpha</span>
+                            <div class="balloon-list">
+                                <div class="balloons">
+                                    <div class="balloon balloon-animation-1 bg-gold"></div>
+                                    <div class="balloon balloon-animation-2 bg-silver"></div>
+                                    <div class="balloon balloon-animation-3 bg-primary"></div>
+                                    <div class="balloon balloon-animation-1 bg-success"></div>
+                                    <div class="balloon balloon-animation-2 bg-warning"></div>
+                                    <div class="balloon balloon-animation-3 bg-danger"></div>
+                                    <div class="balloon balloon-animation-1 bg-info"></div>
+                                    <div class="balloon balloon-animation-2 bg-dark"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white shadow mg-t-10" style="height: 50px;">
+                        <div class="score-item-left bg-bronze">
+                            <span class="score-item-position">3</span>
+                        </div>
+                        <div class="score-item-content">
+                            <span>Equipe Alpha</span>
+                            <div class="balloon-list">
+                                <div class="balloons">
+                                    <div class="balloon balloon-animation-1 bg-gold"></div>
+                                    <div class="balloon balloon-animation-2 bg-silver"></div>
+                                    <div class="balloon balloon-animation-3 bg-primary"></div>
+                                    <div class="balloon balloon-animation-1 bg-success"></div>
+                                    <div class="balloon balloon-animation-2 bg-warning"></div>
+                                    <div class="balloon balloon-animation-3 bg-danger"></div>
+                                    <div class="balloon balloon-animation-1 bg-info"></div>
+                                    <div class="balloon balloon-animation-2 bg-dark"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 </body>
 </html>
