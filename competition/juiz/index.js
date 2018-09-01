@@ -7,8 +7,6 @@ define(['knockout', 'knockout-router'], function(ko) {
 
         self.router = ko.router.vm;
         self.moduleToShow = ko.observable();
-
-        self.name = "Filipe";
     };
 
     self.viewModel = new ViewModel;
@@ -25,8 +23,8 @@ define(['knockout', 'knockout-router'], function(ko) {
         hashPrefix: '#',
         debug: true,
         notify: notify,
-        pushState: true,
-        root: '/competition/juiz'
+        pushState: false,
+        root: '/competition/juiz/'
     });
 
     ko.bindingHandlers.module.baseDir = 'js';
