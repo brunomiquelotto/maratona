@@ -39,9 +39,9 @@ var openApi = _express2.default.Router();
 app.use(_cors2.default);
 app.use('/api', protectedApi);
 app.use('/oapi', openApi);
+
 var redirect = function redirect(route) {
     return function (req, res, next) {
-        console.log(req.params.id);
         if (req.params.id.indexOf('js') == -1 && req.params.id.indexOf('css') == -1 && req.params.id.indexOf('templates') == -1) {
             res.redirect(route);
         } else {
@@ -49,9 +49,10 @@ var redirect = function redirect(route) {
         }
     };
 };
-app.use('/competition/juiz/:id/', redirect('/competition/juiz'));
+
+app.use('/competition/juiz/:id/', redirect('/competition/juiz'), _express2.default.static('competition/juiz'));
 app.use('/competition/placar/:id/', redirect('/competition/placar'));
-app.use('/competition/admin/:id/', redirect('/competition/admin'));
+app.use('/competition/admin/:id/', redirect('/competition/admin'), _express2.default.static('competition/admin'));
 app.use('/competition', _express2.default.static('competition'));
 
 http.listen(port);
