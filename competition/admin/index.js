@@ -24,13 +24,13 @@ define(['knockout', 'knockout-router'], function(ko) {
         debug: true,
         notify: notify,
         pushState: false,
-        root: '/competition/juiz/'
+        root: '/competition/admin/'
     });
 
     ko.bindingHandlers.module.baseDir = 'js';
 
     ko.router.map([
-        { route: 'grupos', name: 'grupos', template: 'grupos', title: 'Grupos', nav: true, module: 'vm-grupos' }
+        { route: 'question', name: 'question', template: 'question', title: 'Question', nav: true, module: 'vm-question' }
     ]).mapNotFound({ callback: notFoundHandler });
 
     ko.applyBindings(viewModel);
