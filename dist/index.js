@@ -34,7 +34,7 @@ app.use(_bodyParser2.default.urlencoded({ extended: true }));
 app.use(_bodyParser2.default.json());
 
 var protectedApi = _express2.default.Router();
-protectedApi.use(_auth2.default);
+// protectedApi.use(Auth)
 (0, _routes.configureRoutes)(protectedApi);
 
 var openApi = _express2.default.Router();

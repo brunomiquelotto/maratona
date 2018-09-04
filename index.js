@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const protectedApi = express.Router();
-protectedApi.use(Auth)
+// protectedApi.use(Auth)
 configureRoutes(protectedApi);
 
 const openApi = express.Router();

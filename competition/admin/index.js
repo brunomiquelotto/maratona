@@ -30,7 +30,11 @@ define(['knockout', 'knockout-router'], function(ko) {
     ko.bindingHandlers.module.baseDir = 'js';
 
     ko.router.map([
-        { route: 'question', name: 'question', template: 'question', title: 'Question', nav: true, module: 'vm-question' }
+        {
+            route: 'register-question', name: 'register-question', template: 'question', title: 'Cadastro Questão',
+            nav: true,
+            module: 'vm-question' 
+        },
     ]).mapNotFound({ callback: notFoundHandler });
 
     ko.applyBindings(viewModel);

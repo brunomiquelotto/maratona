@@ -11,7 +11,8 @@
             'knockout-amd-helpers': '../script/lib/knockout-amd-helpers-0.6.1',
             'knockout-history': '../script/dist/knockout-history',
             'knockout-router': '../script/dist/knockout-router',
-            'text': '../script/lib/require-text-2.0.10'
+            'text': '../script/lib/require-text-2.0.10',
+            'axios': '../script/axios/axios.min',
         },
         shim: {
             'knockout-amd-helpers': {
