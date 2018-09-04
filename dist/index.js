@@ -18,10 +18,6 @@ var _cors = require('./api/middlewares/cors');
 
 var _cors2 = _interopRequireDefault(_cors);
 
-var _database = require('./api/database');
-
-var _database2 = _interopRequireDefault(_database);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express2.default)();
@@ -43,9 +39,21 @@ var openApi = _express2.default.Router();
 app.use(_cors2.default);
 app.use('/api', protectedApi);
 app.use('/oapi', openApi);
-app.use('/competition', _express2.default.static('competition'));
 
-//start();
+var redirect = function redirect(route) {
+    return function (req, res, next) {
+        if (req.params.id.indexOf('js') == -1 && req.params.id.indexOf('css') == -1 && req.params.id.indexOf('templates') == -1) {
+            res.redirect(route);
+        } else {
+            next();
+        }
+    };
+};
+
+app.use('/competition/juiz/:id/', redirect('/competition/juiz'), _express2.default.static('competition/juiz'));
+app.use('/competition/placar/:id/', redirect('/competition/placar'));
+app.use('/competition/admin/:id/', redirect('/competition/admin'), _express2.default.static('competition/admin'));
+app.use('/competition', _express2.default.static('competition'));
 
 http.listen(port);
 
