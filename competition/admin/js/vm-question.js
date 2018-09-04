@@ -1,24 +1,22 @@
-define(['Question', 'knockout', 'axios'], function(Question, ko, axios) {
-
-    class Color {
-        constructor(id, color){
-            this.id = id;
-            this.value = color;
-        }
-    }
+define(['knockout', 'axios'], function(ko, axios) {
 
     class ViewModel {
 
         constructor() {
 
             this.listColor = ko.observableArray([
-                new Color(1, 'red'),
-                new Color(2, 'blue'),
-                new Color(3, 'yellow'),
-                new Color(4, 'green'),
+                { id: 1, value: 'red' },
+                { id: 2, value: 'blue' },
+                { id: 3, value: 'yellow' },
+                { id: 4, value: 'green' },
             ]);
 
-            this.question = new Question;
+            this.question = {
+                id: ko.observable(),
+                letter: ko.observable(),
+                description: ko.observable(),
+                color: ko.observable(),
+            };
         }
 
         saveQuestion() {

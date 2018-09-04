@@ -31,9 +31,14 @@ define(['knockout', 'knockout-router'], function(ko) {
 
     ko.router.map([
         {
-            route: 'register-question', name: 'register-question', template: 'question', title: 'Cadastro Questão',
+            route: 'new-question', template: 'question', title: 'Cadastro Questão',
             nav: true,
-            module: 'vm-question' 
+            module: 'vm-question'
+        },
+        {
+            route: 'questions', template: 'question-list', title: 'Lista de Questões',
+            nav: true,
+            module: 'vm-question-list'
         },
     ]).mapNotFound({ callback: notFoundHandler });
 
