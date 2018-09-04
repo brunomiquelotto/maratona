@@ -1,0 +1,22 @@
+<div class="row">
+    <div class="col-md-12 mg-t-10">
+        <div class="main-card shadow">
+
+            <label>Description</label>
+            <input type="text" name="description" data-bind="value: $data.question.description">
+
+            <label>Letter</label>
+            <input type="text" name="letter" data-bind="value: $data.question.letter">
+
+            <label>Color</label>
+            <select data-bind="options: $data.listColor,
+            optionsText: 'value',
+            selectedOptions: $data.question.color"></select>
+
+            <br>
+
+            <button data-bind="click: $data.saveQuestion"> Salvar </button>
+
+        </div>
+    </div>
+</div>
