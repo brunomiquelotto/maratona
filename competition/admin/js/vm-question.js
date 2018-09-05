@@ -4,13 +4,6 @@ define(['knockout', 'axios'], function(ko, axios) {
 
         constructor() {
 
-            this.listColor = ko.observableArray([
-                { id: 1, value: 'red' },
-                { id: 2, value: 'blue' },
-                { id: 3, value: 'yellow' },
-                { id: 4, value: 'green' },
-            ]);
-
             this.question = {
                 id: ko.observable(),
                 letter: ko.observable(),
@@ -27,7 +20,7 @@ define(['knockout', 'axios'], function(ko, axios) {
                 id: this.question.id(),
                 letter: this.question.letter(),
                 description: this.question.description(),
-                color: color ? color.value : null,
+                color: color,
             };
 
             axios.post(window.location.origin + '/api/questions', payload).then(function (response) {
