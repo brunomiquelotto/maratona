@@ -23,11 +23,6 @@
         </ul>
     </aside>
     <section class="container-fluid main-content">
-        <!-- ko ifnot: router.isNavigating -->
-        <nav data-bind="foreach: router.navRoutes" class="button-group">
-            <a data-bind="text: config.title, attr: { href: config.href }" class="main-button"></a>
-        </nav>
-        <!-- /ko -->
         <section data-bind="router"></section>
     </section>
 </body>
