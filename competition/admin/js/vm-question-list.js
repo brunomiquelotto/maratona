@@ -1,12 +1,5 @@
 define(['knockout', 'axios'], function(ko, axios) {
 
-    class Color {
-        constructor(id, color){
-            this.id = id;
-            this.value = color;
-        }
-    }
-
     class ViewModel {
 
         constructor() {
