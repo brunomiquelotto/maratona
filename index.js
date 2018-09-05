@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const protectedApi = express.Router();
-// protectedApi.use(Auth)
+protectedApi.use(Auth)
 configureRoutes(protectedApi);
 
 const openApi = express.Router();
@@ -23,7 +23,6 @@ configureOpenRoutes(openApi);
 app.use(allowCors);
 app.use('/api', protectedApi);
 app.use('/oapi', openApi);
-
 
 var redirect = function(route) {
     return function(req, res, next) {
@@ -38,7 +37,7 @@ var redirect = function(route) {
 };
 
 
-app.use('/competition/juiz/:id/', redirect('/competition/juiz'), express.static('competition/juiz'));
+app.use('/competition/juiz/:id/', redirect('/competition/juiz'));
 app.use('/competition/placar/:id/', redirect('/competition/placar'));
 app.use('/competition/admin/:id/', redirect('/competition/admin'), express.static('competition/admin'));
 app.use('/competition', express.static('competition'));
