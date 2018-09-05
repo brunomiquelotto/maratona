@@ -1,7 +1,5 @@
 define(['knockout', 'axios'], function(ko, axios) {
 
-    console.log(ko.router);
-
     class ViewModel {
 
         constructor() {
