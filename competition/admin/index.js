@@ -31,15 +31,20 @@ define(['knockout', 'knockout-router'], function(ko) {
 
     ko.router.map([
         {
-            route: 'new-question', template: 'question', title: 'Cadastro Questão',
+            route: 'new-question', template: 'question', title: 'Nova Questão',
             nav: true,
             module: 'vm-question'
         },
         {
-            route: 'questions', template: 'question-list', title: 'Lista de Questões',
+            route: 'questions', template: 'question-list', title: 'Questões',
             nav: true,
             module: 'vm-question-list'
         },
+        {
+            route: 'marathons', template: 'marathon-list', title: 'Maratonas',
+            nav: true,
+            module: 'vm-marathon-list'
+        }
     ]).mapNotFound({ callback: notFoundHandler });
 
     ko.applyBindings(viewModel);
