@@ -30,7 +30,7 @@ app.use(_bodyParser2.default.urlencoded({ extended: true }));
 app.use(_bodyParser2.default.json());
 
 var protectedApi = _express2.default.Router();
-// protectedApi.use(Auth)
+//protectedApi.use(Auth)
 (0, _routes.configureRoutes)(protectedApi);
 
 var openApi = _express2.default.Router();
@@ -50,7 +50,7 @@ var redirect = function redirect(route) {
     };
 };
 
-app.use('/competition/juiz/:id/', redirect('/competition/juiz'), _express2.default.static('competition/juiz'));
+app.use('/competition/juiz/:id/', redirect('/competition/juiz'));
 app.use('/competition/placar/:id/', redirect('/competition/placar'));
 app.use('/competition/admin/:id/', redirect('/competition/admin'), _express2.default.static('competition/admin'));
 app.use('/competition', _express2.default.static('competition'));

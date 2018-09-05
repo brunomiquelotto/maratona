@@ -5,18 +5,23 @@
         <table class="main-table">
             <thead>
                 <tr>
-                    <th>Id</th>
-                    <th>Letra</th>
+                    <th style="width: 100px;">Letra</th>
                     <th>Descrição</th>
-                    <th>Cor</th>
+                    <th style="width: 100px;">Cor</th>
+                    <th style="width:100px;"></th>
                 </tr>
             </thead>
             <tbody data-bind="foreach: questions">
                 <tr>
-                    <td data-bind="text: $data.QuestionId"></td>
                     <td data-bind="text: $data.Letter"></td>
                     <td data-bind="text: $data.Description"></td>
-                    <td data-bind="text: $data.Color"></td>
+                    <td>
+                        <div class="balloon" data-bind="style: { 'background-color': $data.Color }"></div>
+                    </td>
+                    <td>
+                        <button type="button" class="table-button danger-button" data-bind="click: $parent.deleteQuestion"></button>
+                        <button type="button" class="table-button success-button" data-bind="click: $parent.editQuestion"></button>
+                    </td>
                 </tr>
             </tbody>
         </table>

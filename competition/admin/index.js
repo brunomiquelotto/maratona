@@ -36,6 +36,11 @@ define(['knockout', 'knockout-router'], function(ko) {
             module: 'vm-question'
         },
         {
+            route: 'edit-question/:id', template: 'question', title: 'Editar Questão',
+            nav: true,
+            module: 'vm-question'
+        },
+        {
             route: 'questions', template: 'question-list', title: 'Lista de Questões',
             nav: true,
             module: 'vm-question-list'
