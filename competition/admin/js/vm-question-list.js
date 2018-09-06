@@ -19,7 +19,7 @@ define(['knockout', 'axios'], function(ko, axios) {
         }
 
         editQuestion(question){
-            console.log(question);
+            // chamar ainda
         }
 
         getQuestions() {

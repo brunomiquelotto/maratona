@@ -22,9 +22,7 @@ define(['knockout', 'axios'], function(ko, axios) {
 
             axios.get(window.location.origin + '/api/questions/' + this.question.id()).then(response => {
                 if (response.data.resultCode){
-
                     // terminar
-
                 }
             })
             .catch(() => {
