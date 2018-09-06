@@ -40,7 +40,10 @@ export const create = (req, res) => {
         .then(result => {
             let response = {
                 resultCode: 1,
-                resultMessage: 'Operação realizada com sucesso'
+                resultMessage: 'Operação realizada com sucesso',
+                data: {
+                    QuestionId: result[0]
+                }
             }
             res.json(response);
         });

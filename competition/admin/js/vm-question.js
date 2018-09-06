@@ -21,9 +21,16 @@ define(['knockout', 'axios'], function(ko, axios) {
             }
 
             axios.get(window.location.origin + '/api/questions/' + this.question.id()).then(response => {
-                if (response.data.resultCode){
-                    // terminar
+                let data = response.data.data;
+
+                if (!response.data.resultCode || !data){
+                    return;
                 }
+
+                this.question.id(data.QuestionId);
+                this.question.letter(data.Letter);
+                this.question.description(data.Description);
+                this.question.color(data.Color);
             })
             .catch(() => {
                 alert('Erro ao consultar questões');
@@ -40,7 +47,11 @@ define(['knockout', 'axios'], function(ko, axios) {
             };
 
             axios.post(window.location.origin + '/api/questions', payload).then(response => {
+
+                var data = response.data.data;
+
                 if (response.data.resultCode){
+                    this.question.id(data.QuestionId);
                     alert('Questão cadastrada com sucesso');
                     return;
                 }

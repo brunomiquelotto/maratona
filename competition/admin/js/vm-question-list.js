@@ -3,6 +3,9 @@ define(['knockout', 'axios'], function(ko, axios) {
     class ViewModel {
 
         constructor() {
+
+            console.log(ko.router);
+
             this.questions = ko.observableArray();
             this.deleteQuestion = this.deleteQuestion.bind(this);
             this.getQuestions = this.getQuestions.bind(this);
@@ -19,7 +22,7 @@ define(['knockout', 'axios'], function(ko, axios) {
         }
 
         editQuestion(question){
-            // chamar ainda
+            window.location.href = window.location.origin + '/competition/admin/#edit-question/' + question.QuestionId;
         }
 
         getQuestions() {
