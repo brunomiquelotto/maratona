@@ -37,7 +37,7 @@ define(['knockout', 'knockout-router'], function(ko) {
         },
         {
             route: 'edit-question/:id', template: 'question', title: 'Editar Questão',
-            nav: true, // remover depois
+            nav: false, // remover depois
             module: 'vm-question'
         },
         {
@@ -49,6 +49,11 @@ define(['knockout', 'knockout-router'], function(ko) {
             route: 'marathons', template: 'marathon-list', title: 'Maratonas',
             nav: true,
             module: 'vm-marathon-list'
+        },
+        {
+            route: 'new-marathon', template: 'marathon', title: 'Nova Maratona',
+            nav: true,
+            module: 'vm-marathon'
         }
     ]).mapNotFound({ callback: notFoundHandler });
 

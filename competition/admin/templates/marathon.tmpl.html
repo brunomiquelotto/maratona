@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-12 mg-t-10">
+        <div class="main-card shadow" data-bind="with: $data.marathon">
+            <div class="row">
+                <div class="form-group col-9">
+                    <label>Nome</label>
+                    <input type="text" name="description" data-bind="value: name" class="form-control">
+                </div>
+                <div class="col-3 form-group">
+                    <label>Início</label>
+                    <input type="date" name="letter" data-bind="value: dtStart" class="form-control">
+                </div>
+                <div class="col-3 form-group">
+                    <label>Penalidade Por Resposta errada</label>
+                    <input type="text" data-bind="value: wrongTimePenalty" class="form-control" />
+                </div>
+                <div class="col-3 form-group">
+                    <label>Congela placar faltando: </label>
+                    <input type="text" data-bind="value: freezeTime" class="form-control" />
+                </div>
+                <div class="col-3 form-group">
+                    <label>Tempo de competição</label>
+                    <input type="text" data-bind="value: competitionTime" class="form-control" />
+                </div>
+                <div class="col-2 form-group mg-t-30">
+                    <button data-bind="click: $parent.saveMarathon" class="button btn-success" type="button">Salvar</button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
