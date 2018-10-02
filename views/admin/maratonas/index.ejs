@@ -14,7 +14,7 @@
                 <a href="/admin/">Voltar</a>
             </li>
             <li>
-                <a href="/admin/nova-maratona">Nova</a>
+                <a href="/admin/maratonas/nova">Nova</a>
             </li>
         </ul>
     </aside>
@@ -22,32 +22,31 @@
         <div class="row">
             <div class="col-md-12 mg-t-10">
                 <div class="main-card shadow">
-                <table class="main-table">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Início</th>
-                            <th>Tempo</th>
-                            <th style="width: 100px;"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% maratonas.forEach(function(maratona) { %>
-                        <tr>
-                            <td><%=maratona.Name%></td>
-                            <td><%=maratona.DtStart%></td>
-                            <td><%=maratona.CompetitionTime%></td>
-                            <td>
-                                <a href="/admin/maratonas/<%=maratona.CompetitionId%>/competidores">
-                                    <button type="button" class="table-button info-button"></button>
-                                </a>
-                                <button type="button" class="table-button danger-button"></button>
-                            </td>
-                        </tr>
-                        <% }); %>
-                    </tbody>
-                </table>
-        
+                    <a href="/admin/maratonas/nova">Adicionar</a>
+                    <table class="main-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Início</th>
+                                <th>Tempo</th>
+                                <th style="width: 120px;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% maratonas.forEach(function(maratona) { %>
+                            <tr>
+                                <td><%=maratona.Name%></td>
+                                <td><%=maratona.DtStart%></td>
+                                <td><%=maratona.CompetitionTime%></td>
+                                <td>
+                                    <a href="/admin/maratonas/<%=maratona.CompetitionId%>/competidores" class="table-button primary-button"></a>
+                                    <a href="/admin/maratonas/<%=maratona.CompetitionId%>" class="table-button info-button"></a>
+                                    <a class="table-button danger-button" href="/admin/maratonas/<%=maratona.CompetitionId%>/remove"></a>
+                                </td>
+                            </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
