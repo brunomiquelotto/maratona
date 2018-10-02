@@ -150,6 +150,10 @@
     background-color: white;
 }
 
+td>.table-button {
+    margin-top: 5px;
+}
+
 .table-button {
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
     width: 30px;
@@ -157,6 +161,7 @@
     background-color: #ddd;
     border: none;
     border-radius: 8px;
+    display:inline-block;
 }
 
 .table-button:hover {
