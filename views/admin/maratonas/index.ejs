@@ -29,7 +29,7 @@
                                 <th>Nome</th>
                                 <th>Início</th>
                                 <th>Tempo</th>
-                                <th style="width: 120px;"></th>
+                                <th style="width: 150px;"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,6 +40,7 @@
                                 <td><%=maratona.CompetitionTime%></td>
                                 <td>
                                     <a href="/admin/maratonas/<%=maratona.CompetitionId%>/competidores" class="table-button primary-button"></a>
+                                    <a href="/admin/maratonas/<%=maratona.CompetitionId%>/questoes" class="table-button primary-button"></a>
                                     <a href="/admin/maratonas/<%=maratona.CompetitionId%>" class="table-button info-button"></a>
                                     <a class="table-button danger-button" href="/admin/maratonas/<%=maratona.CompetitionId%>/remove"></a>
                                 </td>

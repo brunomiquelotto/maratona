@@ -11,10 +11,7 @@
     <aside class="sidebar">
         <ul class="sidebar-menus">
             <li>
-                <a href="/admin/">Voltar</a>
-            </li>
-            <li>
-                <a href="/admin/nova-questao">Nova</a>
+                <a href="/admin/maratonas/">Voltar</a>
             </li>
         </ul>
     </aside>
@@ -22,31 +19,32 @@
         <div class="row">
             <div class="col-md-12 mg-t-10">
                 <div class="main-card shadow">
-                <table class="main-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 100px;">Letra</th>
-                            <th>Descrição</th>
-                            <th style="width: 100px;">Cor</th>
-                            <th style="width:100px;"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% questoes.forEach(function(questao) { %>
-                        <tr>
-                            <td><%=questao.Letter%></td>
-                            <td><%=questao.Description%></td>
-                            <td>
-                                <div class="balloon" style="background-color: <%=questao.Color%>"></div>
-                            </td>
-                            <td>
-                                <button type="button" class="table-button danger-button" data-bind="click: $parent.deleteQuestion"></button>
-                                <button type="button" class="table-button success-button" data-bind="click: $parent.editQuestion"></button>
-                            </td>
-                        </tr>
-                        <% }) %>
-                    </tbody>
-                </table>
+                    <a href="/admin/maratonas/<%=id%>/questoes/nova">Adicionar</a>
+                    <table class="main-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 100px;">Letra</th>
+                                <th>Descrição</th>
+                                <th style="width: 100px;">Cor</th>
+                                <th style="width:100px;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% questoes.forEach(function(questao) { %>
+                            <tr>
+                                <td><%=questao.Letter%></td>
+                                <td><%=questao.Description%></td>
+                                <td>
+                                    <div class="balloon" style="background-color: <%=questao.Color%>"></div>
+                                </td>
+                                <td>
+                                    <a href="/admin/maratonas/<%=id%>/questoes/<%=questao.QuestionId%>" class="table-button info-button"></a>
+                                    <a href="/admin/maratonas/<%=id%>/questoes/<%=questao.QuestionId%>/remove" class="table-button danger-button"></a>
+                                </td>
+                            </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

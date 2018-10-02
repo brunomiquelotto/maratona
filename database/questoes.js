@@ -1,7 +1,17 @@
 var context = require('./database');
 
-var list = function() {
-    return context.select('QuestionId', 'Letter', 'Description', 'Color').from('TB_QUESTIONS');
+var list = function(id) {
+    return context.select('*').from('TB_QUESTIONS').where({ CompetitionId: id });
 };
 
-module.exports = { list: list };
+var create = function(id, payload) {
+    return context.table('TB_QUESTIONS')
+    .insert({
+        Letter: payload.letter,
+        Description: payload.description,
+        Color: payload.color,
+        CompetitionId: id
+    });
+};
+
+module.exports = { list: list, create: create };
