@@ -12,7 +12,7 @@ var create = function(payload) {
     return context.table('TB_COMPETITIONS')
     .insert({
         Name: payload.name,
-        DtStart: payload.dtStart,
+        DtStart: '',
         WrongTimePenalty: payload.wrongTimePenalty,
         FreezeTime: payload.freezeTime,
         CompetitionTime: payload.competitionTime,
@@ -28,7 +28,7 @@ var update = function(id, payload) {
     .where({CompetitionId: id})
     .update({
         Name: payload.name,
-        DtStart: payload.dtStart,
+        DtStart: '',
         WrongTimePenalty: payload.wrongTimePenalty,
         FreezeTime: payload.freezeTime,
         CompetitionTime: payload.competitionTime,

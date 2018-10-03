@@ -27,18 +27,17 @@
                         <thead>
                             <tr>
                                 <th>Nome</th>
-                                <th>Início</th>
                                 <th>Tempo</th>
-                                <th style="width: 150px;"></th>
+                                <th style="width: 190px;"></th>
                             </tr>
                         </thead>
                         <tbody>
                             <% maratonas.forEach(function(maratona) { %>
                             <tr>
                                 <td><%=maratona.Name%></td>
-                                <td><%=maratona.DtStart%></td>
                                 <td><%=maratona.CompetitionTime%></td>
                                 <td>
+                                    <a href="/admin/maratonas/<%=maratona.CompetitionId%>/iniciar" class="table-button success-button"></a>
                                     <a href="/admin/maratonas/<%=maratona.CompetitionId%>/competidores" class="table-button primary-button"></a>
                                     <a href="/admin/maratonas/<%=maratona.CompetitionId%>/questoes" class="table-button primary-button"></a>
                                     <a href="/admin/maratonas/<%=maratona.CompetitionId%>" class="table-button info-button"></a>
