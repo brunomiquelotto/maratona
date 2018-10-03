@@ -61,6 +61,17 @@
     background-color: rgba(0,0,0,.1);
 }
 
+.sidebar-menus > li > a {
+    font-size: 40px;
+    color: white;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.sidebar-menus > li > a:hover {
+    text-decoration: none;
+}
+
 .main-content {
     background-color: #eee;
     width: calc(100% - 80px);
@@ -155,6 +166,8 @@ td>.table-button {
 }
 
 .table-button {
+    padding-top: 3px;
+    padding-left: 3px;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
     width: 30px;
     height: 30px;
@@ -162,6 +175,11 @@ td>.table-button {
     border: none;
     border-radius: 8px;
     display:inline-block;
+}
+
+.table-button > span {
+    transition: 0.3s;
+    color: rgba(0,0,0, 0.25);
 }
 
 .table-button:hover {
@@ -172,12 +190,23 @@ td>.table-button {
     outline: none;
 }
 
+.table-button:hover > span {
+    color: rgba(255,255,255, 0.55);
+}
+
 .button {
     padding: 6px;
     border: none;
     border-radius: 8px;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
     cursor: pointer;
+}
+
+.button > span {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -4px;
+    color: rgba(0,0,0, 0.25);
 }
 
 .button:focus { outline: none; }
