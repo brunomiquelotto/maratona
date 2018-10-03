@@ -1,4 +1,5 @@
-const { list, remove, create, get, update } = require('../database/maratonas.js');
+const moment = require('moment');
+const { list, remove, create, get, update, start } = require('../database/maratonas.js');
 
 module.exports = function(app) {
     app.get('/admin/maratonas', (req, res) => {
@@ -31,6 +32,12 @@ module.exports = function(app) {
 
     app.post('/admin/maratonas/:id', (req, res) => {
         update(req.params.id, req.body).then(() => {
+            res.redirect('/admin/maratonas');
+        });
+    });
+
+    app.get('/admin/maratonas/:id/iniciar', (req, res) => {
+        start(req.params.id, moment().format('DD/MM/YYYY HH:MM')).then(() => {
             res.redirect('/admin/maratonas');
         });
     });

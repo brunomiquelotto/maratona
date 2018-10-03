@@ -35,4 +35,12 @@ var update = function(id, payload) {
     });
 };
 
-module.exports = { list: list, remove: remove, create: create, get: get, update: update };
+var start = function(id, dtStart) {
+    return context.from('TB_COMPETITIONS')
+    .where({ CompetitionId: id })
+    .update({ 
+       DtStart: dtStart 
+    });
+};
+
+module.exports = { list: list, remove: remove, create: create, get: get, update: update, start: start };
