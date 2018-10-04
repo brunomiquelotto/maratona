@@ -19,26 +19,26 @@
     <section class="container-fluid main-content">
         <div class="row">
             <div class="col-md-12 mg-t-10">
-                <div class="bg-white shadow" style="height: 50px;">
-                    <div class="score-item-left bg-gold">
-                        <span class="score-item-position">1</span>
+                <%teams.forEach(function(team, index) { %>
+                <div class="bg-white shadow" style="height: 50px; margin-top: 5px;">
+                    <div class="score-item-left <%=positions[index]%>">
+                        <span class="score-item-position"><%=index + 1%></span>
                     </div>
                     <div class="score-item-content">
-                        <span>Equipe Alpha</span>
+                        <span><%=team.Name%></span>
                         <div class="balloon-list">
                             <div class="balloons">
-                                <div class="balloon balloon-animation-1 bg-gold"></div>
-                                <div class="balloon balloon-animation-2 bg-silver"></div>
-                                <div class="balloon balloon-animation-3 bg-primary"></div>
-                                <div class="balloon balloon-animation-1 bg-success"></div>
-                                <div class="balloon balloon-animation-2 bg-warning"></div>
-                                <div class="balloon balloon-animation-3 bg-danger"></div>
-                                <div class="balloon balloon-animation-1 bg-info"></div>
-                                <div class="balloon balloon-animation-2 bg-dark"></div>
+                                <%team.questions.forEach(function(question) { %>
+                                    <div style="position:relative; width: 22px;">
+                                        <div class="balloon balloon-animation-1" style="background-color:<%=question.Color%>; <%=question.IsRight ? '' : 'display: none'%>"></div>
+                                        <span style="font-size: 10px; position: absolute; top: -10px;"><%=(question.Tries || 0) + '/' + (question.PenaltyTime || '-')%></span>
+                                    </div>
+                                <% }); %>
                             </div>
                         </div>
                     </div>
                 </div>
+                <% }); %>
             </div>
         </div>
     </section>
