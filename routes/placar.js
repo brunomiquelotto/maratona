@@ -78,5 +78,5 @@ const transformQuestions = question => {
 };
 
 const sortQuestion = (a, b) => {
-    return b.Letter - a.Letter;
+    return a.Letter > b.Letter ? 1 : -1;
 };

@@ -19,6 +19,25 @@
     <section class="container-fluid main-content">
         <div class="row">
             <div class="col-md-12 mg-t-10">
+                <% if (teams.length) { %>
+                    <div class="bg-white shadow" style="height: 50px; margin-top: 5px;">
+                        <div class="score-item-left">
+                            <span class="score-item-position">0</span>
+                        </div>
+                        <div class="score-item-content">
+                            <span>Placar</span>
+                            <div class="balloon-list">
+                                <div class="balloons">
+                                    <%teams[0].questions.forEach(function(question) { %>
+                                        <div style="position:relative; width: 22px;">
+                                            <span><%=question.Letter%></span>
+                                        </div>
+                                    <% }); %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
                 <%teams.forEach(function(team, index) { %>
                 <div class="bg-white shadow" style="height: 50px; margin-top: 5px;">
                     <div class="score-item-left <%=positions[index]%>">
