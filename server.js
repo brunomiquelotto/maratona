@@ -4,6 +4,7 @@ const maratonRoutes = require('./routes/maratonas.js');
 const questoesRoutes = require('./routes/questoes.js');
 const competidoresRoutes = require('./routes/competidores.js');
 const placarRoutes = require('./routes/placar.js');
+const juizRoutes = require('./routes/juiz.js');
 
 const app = express();
 
@@ -25,10 +26,7 @@ maratonRoutes(app);
 questoesRoutes(app);
 competidoresRoutes(app);
 placarRoutes(app);
-
-app.get('/juiz', (req, res) => {
-    res.render('juiz/index.ejs');
-});
+juizRoutes(app);
 
 app.listen(8000, function() {
     console.log('Server is running');

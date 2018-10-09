@@ -10,7 +10,6 @@ module.exports = function(app) {
 
     app.get('/placar/:id', (req, res) => {
         teams(req.params.id).then(result => {
-            // return res.json(result);
             let allTeams = result.filter(getTeamsByResults).map(transformTeam);
             allTeams.forEach(team => {
                 team.questions = result.filter(question => {
@@ -41,16 +40,22 @@ const addPodiumColors = positions => {
 const sort = (a, b) => {
     let aSuccesses = a.questions.filter(question => question.IsRight).length;
     let bSuccesses = b.questions.filter(question => question.IsRight).length;
+    
     if (bSuccesses != aSuccesses) {
         return bSuccesses - aSuccesses;
     }
+    
     if (aSuccesses == 0) {
         return 0;
     }
-    let aPenaltyTime = a.questions.reduce((accumulator, current) => accumulator + (current.PenaltyTime ? current.PenaltyTime : 0), 0);
-    let bPenaltyTime = b.questions.reduce((accumulator, current) => accumulator + (current.PenaltyTime ? current.PenaltyTime : 0), 0);
-    console.log('a: ' + aPenaltyTime);
-    console.log('b: ' + bPenaltyTime);
+
+    let aPenaltyTime = a.questions
+        .filter(question => question.IsRight)
+        .reduce((accumulator, current) => accumulator + (current.PenaltyTime ? current.PenaltyTime : 0), 0);
+    let bPenaltyTime = b.questions
+        .filter(question => question.IsRight)
+        .reduce((accumulator, current) => accumulator + (current.PenaltyTime ? current.PenaltyTime : 0), 0);
+
     return  aPenaltyTime - bPenaltyTime;
 };
 

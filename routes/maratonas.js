@@ -37,7 +37,7 @@ module.exports = function(app) {
     });
 
     app.get('/admin/maratonas/:id/iniciar', (req, res) => {
-        start(req.params.id, moment().format('DD/MM/YYYY HH:MM')).then(() => {
+        start(req.params.id, moment().format('DD/MM/YYYY HH:mm:ss')).then(() => {
             res.redirect('/admin/maratonas');
         });
     });
