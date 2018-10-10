@@ -12,7 +12,7 @@
     <aside class="sidebar">
         <ul class="sidebar-menus">
             <li>
-                <a href="/juiz" class="material-icons">arrow_back</a>
+                <a href="/" class="material-icons">arrow_back</a>
             </li>
         </ul>
     </aside>
@@ -24,7 +24,7 @@
                         <thead>
                             <tr>
                                 <th>Nome</th>
-                                <th>Tempo</th>
+                                <th>Começou</th>
                                 <th style="width: 50px;"></th>
                             </tr>
                         </thead>
@@ -32,7 +32,7 @@
                             <% maratonas.forEach(function(maratona) { %>
                             <tr>
                                 <td><%=maratona.Name%></td>
-                                <td><%=maratona.CompetitionTime%></td>
+                                <td><%=maratona.DtStart%></td>
                                 <td>
                                     <a href="/juiz/<%=maratona.CompetitionId%>" class="table-button info-button">
                                         <span class="material-icons">view_headline</span>

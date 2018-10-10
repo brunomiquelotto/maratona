@@ -28,6 +28,6 @@ competidoresRoutes(app);
 placarRoutes(app);
 juizRoutes(app);
 
-app.listen(process.env.PORT || 5000, function() {
+app.listen(process.env.PORT || 8000, function() {
     console.log('Server is running');
 });
