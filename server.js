@@ -7,6 +7,8 @@ const placarRoutes = require('./routes/placar.js');
 const juizRoutes = require('./routes/juiz.js');
 
 const app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
 app.use('/static', express.static(__dirname + '/static'));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -26,8 +28,9 @@ maratonRoutes(app);
 questoesRoutes(app);
 competidoresRoutes(app);
 placarRoutes(app);
-juizRoutes(app);
+juizRoutes(app, io);
 
-app.listen(process.env.PORT || 8000, function() {
+
+http.listen(process.env.PORT || 8000, function() {
     console.log('Server is running');
 });

@@ -1,7 +1,6 @@
 {
   "name": "crud-node",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -15,10 +14,18 @@
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "knex": "^0.15.2",
+    "knockout": "^3.5.0",
     "moment": "^2.22.2",
+    "socket.io": "^2.2.0",
     "sqlite3": "^4.0.2"
   },
   "devDependencies": {
     "nodemon": "^1.18.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://brunomiquelotto@bitbucket.org/supreme_developers/back-competition-score.git"
+  },
+  "homepage": "https://bitbucket.org/supreme_developers/back-competition-score#readme",
+  "description": ""
 }

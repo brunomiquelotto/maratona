@@ -6,7 +6,7 @@ const list = function() {
 };
 
 const teams = function(competitionId) {
-    return context.from('PLACAR').select('*').where({CompetitionId: competitionId});
+    return context.from('PLACAR').select('*').where({CompetitionId: competitionId}).orderBy('QuestionId', 'DESC');
 };
 
 const includeTry = function(payload, competition) {

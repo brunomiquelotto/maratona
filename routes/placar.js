@@ -1,7 +1,7 @@
-const { list } = require('../database/maratonas.js');
+const { list, getCompetition } = require('../database/maratonas.js');
 const { teams } = require('../database/placar.js');
 
-module.exports = function(app) {
+module.exports = function(app, io) {
     app.get('/placar', (req, res) => {
         list().then((result) => {
             res.render('placar/maratonas.ejs', { maratonas: result });
@@ -18,7 +18,9 @@ module.exports = function(app) {
             });
             let positions = allTeams.map(item => 'bg-default');
             positions = addPodiumColors(positions);
-            res.render('placar/placar.ejs', { teams: allTeams.sort(sort), id: req.params.id, positions: positions });
+            getCompetition(req.params.id).then(competition => {
+                res.render('placar/placar.ejs', { teams: allTeams.sort(sort), id: req.params.id, positions: positions, competition: competition });
+            });
         });
     });
 };

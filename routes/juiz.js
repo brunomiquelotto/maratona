@@ -2,7 +2,7 @@ const moment = require('moment');
 const { list, teams, includeTry, getTeamQuestion, updateTry } = require('../database/juiz.js');
 const { get: getCompetition } = require('../database/maratonas');
 
-module.exports = function(app) {
+module.exports = function(app, io) {
     app.get('/juiz', (req, res) => {
         list().then(result => {
             res.render('juiz/index.ejs', { maratonas: result });
@@ -32,6 +32,18 @@ module.exports = function(app) {
         getCompetition(req.params.id).then(competition => {
             getTeamQuestion(req.body.QuestionId, req.body.TeamId).then(teamQuestion => {
                 handleSaveQuestion(competition, req.body, teamQuestion).then(() => {
+                    teams(req.params.id).then(result => {
+                        let allTeams = result.filter(getTeamsByResults).map(transformTeam);
+                        allTeams.forEach(team => {
+                            team.questions = result.filter(question => {
+                                return question.TeamId == team.TeamId;
+                            }).map(transformQuestions).sort(sortQuestion);
+                        });
+                        let positions = allTeams.map(item => 'bg-default');
+                        positions = addPodiumColors(positions);
+                        if (competition)
+                        io.emit('update_score', { items: allTeams.sort(sort) });
+                    });
                     return res.redirect('/juiz/' + req.params.id);
                 });
             });
